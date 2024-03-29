@@ -1,14 +1,11 @@
-# template-lib-android
+# lib-container-android
 
-[![](https://jitpack.io/v/Brent-Tunnicliff/template-lib-android.svg)](https://jitpack.io/#Brent-Tunnicliff/template-lib-android)
+[![](https://jitpack.io/v/Brent-Tunnicliff/lib-container-android.svg)](https://jitpack.io/#Brent-Tunnicliff/lib-container-android)
 
-Template as a base for all my Android libraries.
+Library of helpers for using manual dependency injection container pattern specified in Android
+docs https://developer.android.com/training/dependency-injection/manual.
+
 Project contains the library `lib/` and a demo app `app/`.
-
-After generating the repository:
-
-- find all cases of `replace_me` and rename them.
-- Edit the above jitpack badge address.
 
 ## Disclaimer
 
