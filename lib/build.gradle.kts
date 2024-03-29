@@ -40,7 +40,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "dev.tunnicliff"
             artifactId = "container"
-            version = "0.1.0"
+            version = "1.0.0"
 
             afterEvaluate {
                 from(components["release"])
