@@ -1,4 +1,4 @@
-package dev.tunnicliff.replace_me.demo
+package dev.tunnicliff.container.demo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,12 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.tunnicliff.replace_me.Example
-import dev.tunnicliff.replace_me.demo.ui.theme.DemoTheme
+import dev.tunnicliff.container.demo.ui.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val container = (application as MainApplication).container
+        val exampleService = container.exampleService()
+
         setContent {
             DemoTheme {
                 // A surface container using the 'background' color from the theme
@@ -23,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Message()
+                    Message(exampleService.message)
                 }
             }
         }
@@ -31,9 +33,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Message(modifier: Modifier = Modifier) {
+fun Message(
+    message: String,
+    modifier: Modifier = Modifier
+) {
     Text(
-        text = "Value: ${Example.VALUE}",
+        text = "Value: $message",
         modifier = modifier
     )
 }
@@ -42,6 +47,6 @@ fun Message(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     DemoTheme {
-        Message()
+        Message("Hi from preview")
     }
 }

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.tunnicliff.replace_me"
+    namespace = "dev.tunnicliff.container"
     compileSdk = 34
 
     defaultConfig {
@@ -39,8 +39,8 @@ publishing {
     publications {
         register<MavenPublication>("release") {
             groupId = "dev.tunnicliff"
-            artifactId = "replace_me"
-            version = "0.0.0"
+            artifactId = "container"
+            version = "0.1.0"
 
             afterEvaluate {
                 from(components["release"])
