@@ -1,6 +1,6 @@
 # lib-container-android
 
-[![](https://jitpack.io/v/Brent-Tunnicliff/lib-container-android.svg)](https://jitpack.io/#Brent-Tunnicliff/lib-container-android)
+[![](https://jitpack.io/v/Brent-Tunnicliff/lib-container-android.svg)](https://jitpack.io/#Brent-Tunnicliff/lib-container-android) ![Weekly download statistics](https://jitpack.io/v/Brent-Tunnicliff/lib-container-android/week.svg) ![Monthly download statistics](https://jitpack.io/v/Brent-Tunnicliff/lib-container-android/month.svg)
 
 Library of helpers for using manual dependency injection container pattern specified in Android
 docs https://developer.android.com/training/dependency-injection/manual.
