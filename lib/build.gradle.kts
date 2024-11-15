@@ -1,14 +1,14 @@
 // Copyright © 2024 Brent Tunnicliff <brent@tunnicliff.dev>
 
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinAndroid)
     id("maven-publish")
-    id("org.jetbrains.kotlin.android")
 }
 
 android {
     namespace = "dev.tunnicliff.container"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 33
@@ -27,6 +27,10 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -37,30 +41,55 @@ android {
     }
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "dev.tunnicliff"
-            artifactId = "container"
-            version = "1.0.0"
-
-            afterEvaluate {
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
                 from(components["release"])
+                groupId = "dev.tunnicliff"
+                artifactId = "lib-container-android"
+                version = "1.0.0-beta.2"
+
+                pom {
+                    packaging = "aar"
+                    name.set("lib-container-android")
+                    description.set("lib-container-android: Library of helpers for using manual dependency injection container pattern.")
+                    url.set("https://github.com/Brent-Tunnicliff/lib-container-android")
+                    inceptionYear.set("2024")
+
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("brent")
+                            name.set("Brent Tunnicliff")
+                            email.set("brent@tunnicliff.dev")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git:https://github.com/Brent-Tunnicliff/lib-container-android.git")
+                        developerConnection.set("scm:git:ssh://git@github.com:Brent-Tunnicliff/lib-container-android.git")
+                        url.set("https://github.com/Brent-Tunnicliff/lib-container-android")
+                    }
+                }
             }
         }
     }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
 
-    // Example of github lib.
-    // implementation("com.github.Brent-Tunnicliff:temp_poc:0.0.4")
+    testImplementation(libs.junit)
 
-    testImplementation("junit:junit:4.13.2")
-
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.test.ext.junit)
 }
